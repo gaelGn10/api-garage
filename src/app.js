@@ -1,5 +1,5 @@
 import express from "express";
-import { initializeApp, cert, getApps } from "firebase-admin/app";
+import { cert, getApps, initializeApp } from "firebase-admin/app";
 import { getFirestore } from "firebase-admin/firestore";
 
 const app = express();
@@ -40,7 +40,7 @@ const db = getFirestore();
 
 app.get("/reparations", async (req, res) => {
   try {
-    const snapshot = await db.collection("reparations").get();
+    const snapshot = await db.collection("reparation").get();
     const reparations = snapshot.docs.map(doc => ({
       id: doc.id,
       ...doc.data(),
